@@ -6,7 +6,7 @@
     <title>Poppa's Pizza</title>
 
     <!-- favicon -->
-    <link rel="icon" href="images/pizza-slice.jpg">
+    <link rel="icon" href="images/pizza-guy.jpg">
 
     <!-- stylesheet -->
      <link rel="stylesheet" href="styles/pizza-styles.css">
@@ -21,9 +21,48 @@
             <p>Come check us out</p>
             <a id="contact-button" href="#" role="button">Contact Us</a>
         </header>
-    </main>
-    <form>
+
+    <form id="pizza-form" action="#" method="get">
+    <!-- Contact Info-->
+        <fieldset>
+            <legend>Contact Info</legend>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname">
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+        </fieldset>
+
+        <fieldset>
+            <!-- Pickup or Delivery -->
+            <legend>Select Pickup Or Delivery</legend>
+            <label for="pickup">
+                <input type="radio" id="pickup" 
+                    value="pickup" name="method">Pickup</label>
+
+            <label for="delivery">
+                <input type="radio" id="delivery" 
+                    value="pickup" name="method">Delivery</label>        
+        </fieldset>
+
+        <fieldset>
+            <!-- Toppings -->
+            <legend>Select Toppings</legend>
+           
+        </fieldset>
+            <!-- Size -->
+        <fieldset>
+            <legend>Pizza Size</legend>
+           
+        </fieldset>
+
+        <!-- Submit Button -->
+        <button type="submit" id="order-button">Place Order</button>
 
     </form>
+    </main>
 </body>
 </html>
