@@ -1,5 +1,25 @@
 {
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "name": "pizza-wi26",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPbooya/pizza-wi26.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JPbooya/pizza-wi26/issues"
+  },
+  "homepage": "https://github.com/JPbooya/pizza-wi26#readme",
+  "description": "",
+  "type": "module"
 }
