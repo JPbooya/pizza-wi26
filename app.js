@@ -1,8 +1,10 @@
 import express from 'express';
 const app = express();
 const PORT = 3001;
-
 app.use(express.static('public'));
+
+// set ejs as the view engine
+app.set('view engine', 'ejs');
 
 /* middleware that allows express to read 
  form data and store it in req.body */
@@ -12,22 +14,22 @@ app.use(express.urlencoded({extended: true}));
 const orders = []; 
 
 app.get('/', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/home.html`)
+  res.render('home');
 });
 
 // Contact route
 app.get('/contact-us', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/contact.html`)
+  res.render('contact')
 });
 
 // confirmation route
 app.get('/thank-you', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/confirmation.html`)
+  res.render('confirmation')
 });
 
 // admin route
 app.get('/admin', (req, res) => {
-  res.send(orders);
+  res.render('admin', {orders});
 });
 
 // submit-order route
@@ -49,7 +51,7 @@ app.post('/submit-order', (req, res) => {
   orders.push(order);
 
  // res.send(orders);
-  res.sendFile(`${import.meta.dirname}/views/confirmation.html`)
+  res.render('confirmation', { order });
 });
 
 app.listen(PORT, () => {
