@@ -1,4 +1,11 @@
 import express from 'express';
+import mysql2 from 'mysql2';
+import dotenv from 'dotenv';
+
+// load enviroment variables from .env
+dotenv.config
+console.log(process.env.DB_HOST);
+
 const app = express();
 const PORT = 3001;
 app.use(express.static('public'));
@@ -12,6 +19,27 @@ app.use(express.urlencoded({extended: true}));
 
 // create a temp array to store orders
 const orders = []; 
+
+// create a pool bucket of database connections
+const pool = mysql2.createPool({
+  host: process.env.DB_HOST,
+  user:process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
+}).promise();
+
+// database test route
+// async and await keyword needs too be togther too excute the function
+app.get('/db-test', async(req, res) => {
+  try {
+    const pizza_orders = await pool.query('SELECT * FROM orders')
+    res.send(pizza_orders[0])
+  } catch(err) {
+    console.error('Database error: ', err);
+  }
+
+});
 
 app.get('/', (req, res) => {
   res.render('home');
