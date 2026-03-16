@@ -23,6 +23,14 @@
             <a id="contact-button" href="#" role="button">Contact Us</a>
         </header>
 
+    <!-- Display form errors if they exist-->
+    <% if (typeof errors != 'undefined') { %>
+        <p>yes, there are errors</p>
+        <% errors.forEach(error => { %>
+         <p> <%= error %> </p>
+         <% }); %>
+    <%  } %>
+
     <!-- post method is more secure than get -->
     <form id="pizza-form" action="/submit-order" method="post">
 

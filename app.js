@@ -1,9 +1,11 @@
 import express from 'express';
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
+import { validateForm } from './validation.js';
+
 
 // load enviroment variables from .env
-dotenv.config
+dotenv.config()
 console.log(process.env.DB_HOST);
 
 const app = express();
@@ -63,6 +65,8 @@ app.get('/admin', (req, res) => {
 // submit-order route
 app.post('/submit-order', (req, res) => {
 
+
+
   // create a json object
   const order = {
     fname: req.body.fname,
@@ -74,6 +78,14 @@ app.post('/submit-order', (req, res) => {
     comment: req.body.comment,
     timestamp: new Date()
   };
+
+  const valid = validateForm(order);
+  if (!valid.isValid) {
+
+  console.log(valid);
+  res.render('home', {errors: valid.errors});
+  return;
+  }
 
   // add order object to orders array
   orders.push(order);
