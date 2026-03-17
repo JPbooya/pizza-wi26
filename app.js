@@ -62,6 +62,12 @@ app.get('/admin', (req, res) => {
   res.render('admin', {orders});
 });
 
+// portfolio route
+app.get('/portfolio', (req, res) => {
+  res.render('/portfolio', {orders});
+});
+
+
 // submit-order route
 app.post('/submit-order', (req, res) => {
 
